@@ -13,18 +13,15 @@ export class MoneyInput {
   public maxValue = 9999999999
 
   @HostListener('keyup', ['$event'])
-  onKeyUp(event) {
-    let targetElement: HTMLInputElement = event.target
-    let inputValue: string = event.target.value.replace(/[^\d.]/g, '')
+  onKeyUp(event: KeyboardEvent) {
+    let targetElement: HTMLInputElement = <HTMLInputElement> event.target
+    let inputValue: string = targetElement.value.replace(/[^\d.]/g, '')
+    let hasOnlyOnePeriod = inputValue.indexOf('.') === inputValue.lastIndexOf('.')
+    let periodIsAtEnd = inputValue.indexOf('.') === inputValue.length - 1
 
     //edge case, also works at removing junk input
     if (inputValue === '') {
       targetElement.value = ''
-      return
-    }
-
-    //ignore input string navigation
-    if (event.keyCode == KeyCodes.LEFT || event.keyCode == KeyCodes.RIGHT) {
       return
     }
 
@@ -39,7 +36,18 @@ export class MoneyInput {
     if (numericValue > this.maxValue) {
       numericValue = this.maxValue
     }
+
+    let newValue = addCommas(numericValue)
+
+    //this will let key pressed like ctrl+a or cmd+a, or arrow presses go through
+    if(newValue === targetElement.value){
+      return
+    }
+
     targetElement.value = addCommas(numericValue)
+    if (hasOnlyOnePeriod && periodIsAtEnd) {
+      targetElement.value += '.'
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "money-input",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "An Angular 2 money input that is useful for entering in money values. Atm is just adds commas",
   "main": "index.js",
   "license": "MIT",
