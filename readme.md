@@ -1,4 +1,4 @@
-# Finance Input 
+# Finance Input
 
 Makes it easier to see large numbers
 
@@ -6,7 +6,6 @@ Makes it easier to see large numbers
 
 * Max value
 * Format the amount with a thousands separator (',') as you type
-* Trim trailing zeroes after the decimal point
 * Support the following keyboard shortcuts (case insensitive):
   * Entering 'k' will multiply the amount by one thousand
   * Entering 'm' will multiply the amount by one million
@@ -14,3 +13,6 @@ Makes it easier to see large numbers
 * Prevent the user from entering an invalid amount where possible
 * Be user friendly and behave intuitively when entering or editing an amount
 * Support cut, paste, undo
+
+# Roadmap
+* Trim trailing zeroes after the decimal point
