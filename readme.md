@@ -16,3 +16,14 @@ Makes it easier to see large numbers
 
 # Roadmap
 * Trim trailing zeroes after the decimal point
+
+#Tests
+
+The tests are done using the component as part of a real cli app. You can run the tests by 
+
+```
+cd tests
+npm i
+ng test
+```
+
