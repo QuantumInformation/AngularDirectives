@@ -1,7 +1,7 @@
-import {TestBed, async} from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 
-import {AppComponent} from './app.component';
-import {MoneyInput} from 'money-input';
+import { AppComponent } from './app.component';
+import { MoneyInput } from 'money-input';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -24,19 +24,17 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
 
-    let testComponent: HTMLInputElement = compiled.querySelector('input')
+    let c = new MoneyInput()
+    let event = {
+      target: {
+        value: '1000',
+        keyCode: ''
+      }
+    }
 
+    c.onKeyUp(event as any)
 
-    expect(testComponent).toBeTruthy();
-    testComponent.value = "1000"
-    testComponent.dispatchEvent(new Event("keyup"))
-    setTimeout(function () {
-      fixture.detectChanges();
-
-      expect(testComponent.value).toBe("1000");
-
-    }, 0)
+    expect(c['formattedValue']).toBe("1,000");
 
   }));
 });
-document.querySelector('')

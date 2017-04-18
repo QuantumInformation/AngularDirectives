@@ -38,47 +38,19 @@ export class MoneyInput {
       numericValue = this.maxValue
     }
 
-    let newValue = addCommas(numericValue)
+    let newValue = numericValue.toLocaleString()
 
     //this will let key pressed like ctrl+a or cmd+a, or arrow presses go through
     if(newValue === targetElement.value){
       return
     }
 
-    this.formattedValue = addCommas(numericValue)
+    this.formattedValue = newValue
     if (hasOnlyOnePeriod && periodIsAtEnd) {
       this.formattedValue += '.'
     }
   }
-}
-
-function addCommas(inputValue: number): string {
-  let inputString: string = inputValue.toString()
-
-
-  var decimalSplit: string[] = inputString.split(".")
-  var intPart: string = decimalSplit[0]
-  var decPart: string = decimalSplit[1]
-
-  if (intPart.length > 3) {
-    var intDiv = Math.floor(intPart.length / 3)
-    while (intDiv > 0) {
-      var lastComma = intPart.indexOf(",")
-      if (lastComma < 0) {
-        lastComma = intPart.length
-      }
-      if (lastComma - 3 > 0) {
-        intPart = intPart.slice(0, lastComma - 3) + "," + intPart.slice(lastComma - 3)
-      }
-      intDiv--
-    }
+  ngOnInit() {
+    console.log('ngOnInit fired');
   }
-  if (decPart === undefined) {
-    decPart = ""
-  }
-  else {
-    decPart = "." + decPart
-  }
-  var res = intPart + decPart
-  return res
 }
